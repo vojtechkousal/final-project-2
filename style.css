@@ -1,0 +1,28 @@
+*{
+  background: lightgray;  
+}
+
+header {
+    width: 100%;
+}
+
+.main-nav {
+    display: flex;
+    justify-items: center;
+    min-width: 100%;
+}
+
+.logo {
+    display: flex;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+}
+
+main {
+    min-height: 100vh;
+}
