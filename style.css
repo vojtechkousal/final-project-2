@@ -45,8 +45,15 @@ header {
     font-weight: 500;
 }
 
+/* homepage */
+
 main {
     min-height: 100vh;
     display: grid;
     grid-template-columns: ;
 }
+
+/* gallery */
+
+
+/* contact */
