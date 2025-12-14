@@ -1,13 +1,48 @@
+/* =========================
+   CSS VARIABLES
+   ========================= */
+
+:root {
+    /* Base colors */
+    --color-bg-main: lightgray;
+    --color-text-main: black;
+    --color-text-muted: #444;
+
+    /* Accent colors */
+    --color-primary: darkblue;
+    --color-secondary: #1a46ff;
+
+    /* UI colors */
+    --color-white: #ffffff;
+    --color-gray-light: #ccc;
+    --color-gray-medium: #999;
+
+    /* Effects */
+    --shadow-image-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   RESET
+   ========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* =========================
+   BASE
+   ========================= */
+
 body {
-    background: lightgray;
+    background: var(--color-bg-main);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/* =========================
+   HEADER / NAV
+   ========================= */
 
 header {
     height: 60px;
@@ -16,7 +51,7 @@ header {
 
 @media (max-width: 600px) {
     header {
-        height: auto; /* 🔑 allow header to grow */
+        height: auto;
     }
 }
 
@@ -34,23 +69,24 @@ header {
     font-size: 1.3rem;
     font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: var(--color-text-main);
 }
-
 
 .main-nav ul {
     display: flex;
     gap: 20px;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .main-nav ul li a {
     text-decoration: none;
-    color: black;
+    color: var(--color-text-main);
     font-weight: 500;
 }
+
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
     min-height: 100px;
@@ -59,20 +95,24 @@ footer {
     justify-content: center;
 }
 
-/* homepage */
+/* =========================
+   ANIMATIONS
+   ========================= */
 
 @keyframes fadeUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* =========================
+   HOMEPAGE LAYOUT
+   ========================= */
 
 .index-main {
     min-height: 100vh;
@@ -86,53 +126,51 @@ footer {
     grid-column: 1;
     padding: 40px 30px;
     max-width: 800px;
-
     animation: fadeUp 0.8s ease-out forwards;
 }
 
 .index-main h1,
 .index-main h2 {
     font-family: 'Marck Script', cursive;
-    color: darkblue;
+    color: var(--color-primary);
     letter-spacing: 0.04em;
 }
 
 h1 {
     font-size: 3rem;
-
 }
 
 h2 {
     font-size: 2.5rem;
 }
 
-
 .index-article p {
     line-height: 1.6;
     margin-bottom: 12px;
 }
 
+/* =========================
+   ARTICLE CONTENT
+   ========================= */
 
 .articles img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     margin: 30px 0;
     border-radius: 6px;
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .articles img:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-image-hover);
 }
 
 .perex {
     font-style: italic;
     font-size: 1.05rem;
     margin: 20px 0 30px;
-    color: #444;
+    color: var(--color-text-muted);
 }
 
 .question {
@@ -141,9 +179,12 @@ h2 {
     margin-bottom: 8px;
 }
 
+/* =========================
+   QUOTES
+   ========================= */
+
 .quote-box {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 20px 0;
 }
 
 .quote {
@@ -153,6 +194,7 @@ h2 {
     text-align: center;
     line-height: 1.4;
     max-width: 80%;
+    margin: 0 auto;
 }
 
 .quote::before {
@@ -161,8 +203,7 @@ h2 {
     left: 0;
     top: -10px;
     font-size: 4rem;
-    color: #999;
-    line-height: 1;
+    color: var(--color-gray-medium);
 }
 
 .quote::after {
@@ -171,9 +212,12 @@ h2 {
     right: 0;
     bottom: -20px;
     font-size: 4rem;
-    color: #999;
-    line-height: 1;
+    color: var(--color-gray-medium);
 }
+
+/* =========================
+   ASIDE
+   ========================= */
 
 .index-aside {
     grid-column: 2;
@@ -182,24 +226,14 @@ h2 {
     top: 20px;
 }
 
-.aside-top {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.aside-top nav ul a {
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-}
-
+.aside-top,
 .aside-bottom {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-/* gallery */
+/* =========================
+   GALLERY
+   ========================= */
 
 #gallery {
     display: grid;
@@ -211,8 +245,7 @@ h2 {
     margin-left: calc(-50vw + 50%);
 }
 
-/*Desktop*/
-
+/* Desktop full-screen gallery */
 @media (min-width: 1025px) {
     #gallery {
         height: calc(100vh - 60px);
@@ -230,30 +263,20 @@ h2 {
 /* Mobile */
 @media (max-width: 600px) {
 
-    header {
-        height: auto;
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
     }
 
     #gallery {
         grid-template-columns: 1fr;
         padding: 10px;
-
-        height: auto;
-        min-height: auto;
-
         width: 100%;
         margin-left: 0;
-    }
-
-    .gallery-image {
-        height: auto;       /* 🔑 THIS FIXES MISSING IMAGES */
-        aspect-ratio: auto;
-    }
-
-    .gallery-image.tall,
-    .gallery-image.wide {
-        grid-row: auto;
-        grid-column: auto;
+        height: auto;
     }
 
     .main-nav {
@@ -277,11 +300,15 @@ h2 {
     grid-column: span 2;
 }
 
+/* =========================
+   IMAGE WRAPPER
+   ========================= */
+
 .image-wrapper {
     width: 100%;
     height: 200px;
     overflow: scroll;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray-light);
 }
 
 .image-wrapper img {
@@ -289,8 +316,9 @@ h2 {
     height: auto;
 }
 
-
-/* contact */
+/* =========================
+   CONTACT FORM
+   ========================= */
 
 .contact-main {
     width: 100%;
@@ -301,8 +329,8 @@ h2 {
 }
 
 #form {
-    background: #1a46ff;
-    color: white;
+    background: var(--color-secondary);
+    color: var(--color-white);
     padding: 50px;
     border-radius: 10px;
 
@@ -332,21 +360,10 @@ h2 {
     font-weight: 300;
 }
 
-#name-field {
-    grid-area: name;
-}
-
-#email-field {
-    grid-area: email;
-}
-
-#phone-field {
-    grid-area: phone;
-}
-
-#submit-field {
-    grid-area: submit;
-}
+#name-field { grid-area: name; }
+#email-field { grid-area: email; }
+#phone-field { grid-area: phone; }
+#submit-field { grid-area: submit; }
 
 input {
     width: 100%;
@@ -354,14 +371,14 @@ input {
     font-size: 16px;
     border-radius: 10px;
     border: none;
-    color: black;
+    color: var(--color-text-main);
 }
 
 button {
     padding: 15px;
     font-size: 18px;
-    background: white;
-    color: #1a46ff;
+    background: var(--color-white);
+    color: var(--color-secondary);
     border-radius: 10px;
     border: none;
     font-weight: bold;
