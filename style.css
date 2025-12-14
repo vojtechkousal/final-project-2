@@ -329,10 +329,12 @@ h2 {
 }
 
 #form {
-    background: var(--color-secondary);
-    color: var(--color-white);
+    background: var(--color-white);
+    color: var(--color-text-main);
+
     padding: 50px;
-    border-radius: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-gray-light);
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -340,51 +342,115 @@ h2 {
         "title title"
         "subtitle subtitle"
         "name email"
-        "phone phone"
+        "story story"
         "submit submit";
     gap: 20px;
 
     width: 80%;
     max-width: 700px;
     text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 #form h1 {
     grid-area: title;
-    font-size: 36px;
+    font-family: 'Marck Script', cursive;
+    font-size: 2.5rem;
+    color: var(--color-primary);
 }
 
 #form h2 {
     grid-area: subtitle;
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 14px 16px;
+
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6;
+
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-light);
+
+    background: var(--color-white);
+    color: var(--color-text-main);
+
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.1);
 }
 
 #name-field { grid-area: name; }
 #email-field { grid-area: email; }
-#phone-field { grid-area: phone; }
+#story-field { grid-area: story; }
 #submit-field { grid-area: submit; }
 
 input {
     width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
+    padding: 14px 16px;
+    font-size: 1rem;
+
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-light);
+
+    background: var(--color-white);
     color: var(--color-text-main);
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 139, 0.1);
 }
 
 button {
-    padding: 15px;
-    font-size: 18px;
-    background: var(--color-white);
-    color: var(--color-secondary);
-    border-radius: 10px;
+    padding: 14px;
+    font-size: 1rem;
+
+    background: var(--color-primary);
+    color: var(--color-white);
+
+    border-radius: 8px;
     border: none;
-    font-weight: bold;
+
+    font-weight: 600;
+    letter-spacing: 0.05em;
     cursor: pointer;
+
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #00008b; /* slightly darker blue */
+    transform: translateY(-1px);
 }
+
+@media (max-width: 600px) {
+    #form {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "subtitle"
+            "name"
+            "email"
+            "story"
+            "submit";
+
+        padding: 30px;
+    }
+}
+
