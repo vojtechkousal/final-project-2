@@ -212,11 +212,17 @@ footer {
 }
 
 h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    white-space: nowrap;
 }
 
-h2 {
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
+.index-main h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    letter-spacing: 0.02em;
+    max-width: 32ch;
 }
 
 .index-article p {
@@ -266,9 +272,9 @@ h2 {
 .quote {
     position: relative;
     font-family: 'Marck Script', cursive;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.35;
     max-width: 80%;
     margin: 0 auto;
 }
@@ -308,7 +314,7 @@ h2 {
 
     display: grid;
     grid-template-rows: auto auto auto;
-    gap: 32px; /* 🔑 spacing between topics instead of dividers */
+    gap: 24px; /* 🔑 spacing between topics instead of dividers */
 }
 
 /* Individual topic blocks */
@@ -344,7 +350,7 @@ h2 {
 
 /* 🔽 reduced gaps in archive list */
 .index-aside li {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .index-aside li:last-child {
@@ -356,6 +362,7 @@ h2 {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--color-text-main);
+    line-height: 1.3;
 
     transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -363,6 +370,12 @@ h2 {
 .index-aside a:hover {
     color: var(--color-primary);
     transform: translateX(3px);
+}
+
+.index-aside .aside-middle ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 12px;
 }
 
 /* =========================
@@ -412,6 +425,13 @@ h2 {
 .gallery-item {
     position: relative;
     overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover,
+.gallery-item:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .gallery-item.tall {
@@ -427,8 +447,13 @@ h2 {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.35s ease;
 }
 
+.gallery-item:hover img,
+.gallery-item:focus-within img {
+    transform: scale(1.04);
+}
 /* caption overlay */
 .gallery-item figcaption {
     position: absolute;
@@ -448,11 +473,12 @@ h2 {
     font-size: 0.95rem;
 
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.gallery-item:hover figcaption {
+.gallery-item:hover figcaption,
+.gallery-item:focus-within figcaption {
     opacity: 1;
     transform: translateY(0);
 }
@@ -510,6 +536,11 @@ h2 {
         background: rgba(0,0,0,0.6);
         text-align: center;
     }
+{
+    .index-aside {
+        display: none;
+    }
+}
 }
 
 /* =========================
@@ -539,6 +570,12 @@ h2 {
    FAQ
    ========================= */
 
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .faq-title {
     font-family: 'Marck Script', cursive;
     font-size: 2rem;
@@ -546,37 +583,61 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* Individual FAQ item */
 .faq-item {
     border-bottom: 1px solid var(--color-gray-light);
+    padding: 12px 0;
 }
 
-.faq-item input {
+/* Summary (question) */
+.faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding-right: 24px;
+    position: relative;
+    list-style: none;
+}
+
+/* Remove default triangle marker */
+.faq-item summary::-webkit-details-marker {
     display: none;
 }
 
-.faq-item label {
-    display: block;
-    padding: 14px 10px;
-    cursor: pointer;
-    font-weight: 600;
-    position: relative;
-}
-
-.faq-item label::after {
+/* Custom + / − icon */
+.faq-item summary::after {
     content: "+";
     position: absolute;
-    right: 10px;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--color-primary);
 }
 
-.faq-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+/* Open state */
+.faq-item[open] summary::after {
+    content: "−";
 }
 
-.faq-item input:checked + label + .faq-content {
-    max-height: 200px;
+/* Answer text */
+.faq-item p {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
 }
+
+/* Smooth open animation */
+.faq-item[open] p {
+    animation: fadeUp 0.3s ease-out;
+}
+
+/* Focus styles for accessibility */
+.faq-item summary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
 
 /* =========================
    CONTACT FORM
@@ -656,6 +717,13 @@ button {
     color: white;
     text-decoration: none;
     border-radius: 8px;
+}
+
+@media (min-width: 1200px) {
+    .index-aside {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

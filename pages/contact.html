@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
 
     <header>
@@ -37,39 +38,31 @@
             <section class="faq">
                 <h2 class="faq-title">Frequently Asked Questions</h2>
 
-                <div class="faq-item">
-                    <input type="checkbox" id="faq-1">
-                    <label for="faq-1">Who can submit a story?</label>
-                    <div class="faq-content">
-                        <p>
-                            Anyone connected to Czechia and living in or around Vancouver can share their story.
-                            You don’t have to be a writer — authentic experiences matter most.
-                        </p>
-                    </div>
-                </div>
+                <details class="faq-item">
+                    <summary>Who can submit a story?</summary>
+                    <p>
+                        Anyone connected to Czechia and living in or around Vancouver can share their story.
+                        You don’t have to be a writer — authentic experiences matter most.
+                    </p>
+                </details>
 
-                <div class="faq-item">
-                    <input type="checkbox" id="faq-2">
-                    <label for="faq-2">How long can my story be?</label>
-                    <div class="faq-content">
-                        <p>
-                            Short stories are great, but you’re welcome to write a longer paragraph as well.
-                            We may lightly edit submissions for clarity while keeping your voice intact.
-                        </p>
-                    </div>
-                </div>
+                <details class="faq-item">
+                    <summary>How long can my story be?</summary>
+                    <p>
+                        Short stories are great, but you’re welcome to write a longer paragraph as well.
+                        We may lightly edit submissions for clarity while keeping your voice intact.
+                    </p>
+                </details>
 
-                <div class="faq-item">
-                    <input type="checkbox" id="faq-3">
-                    <label for="faq-3">Will my story be published?</label>
-                    <div class="faq-content">
-                        <p>
-                            Selected stories may be published on Czechcouver with your permission.
-                            If you prefer to stay anonymous, just let us know.
-                        </p>
-                    </div>
-                </div>
+                <details class="faq-item">
+                    <summary>Will my story be published?</summary>
+                    <p>
+                        Selected stories may be published on Czechcouver with your permission.
+                        If you prefer to stay anonymous, just let us know.
+                    </p>
+                </details>
             </section>
+
 
             <div id="form-container">
                 <form id="form">
@@ -99,8 +92,8 @@
         </section>
     </main>
 
-      <footer>
-            <p>Vojtech Kousal 2025</p>
+    <footer>
+        <p>Vojtech Kousal 2025</p>
     </footer>
 
 </body>
