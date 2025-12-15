@@ -31,11 +31,19 @@
    BASE
    ========================= */
 
+html {
+    font-size: clamp(15px, 1.2vw, 18px);
+}
+
 body {
     background: var(--color-bg-main);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--color-text-main);
+
+    font-size: 1rem;
+    line-height: 1.6;
 }
+
 
 /* =========================
    HEADER / NAV
@@ -192,7 +200,7 @@ footer {
 
 .index-article {
     padding: 40px 30px;
-    max-width: 800px;
+    max-width: 70ch;
     animation: fadeUp 0.8s ease-out forwards;
 }
 
@@ -204,16 +212,17 @@ footer {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
 }
 
 .index-article p {
     line-height: 1.6;
     margin-bottom: 12px;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
 }
 
 /* =========================
@@ -257,7 +266,7 @@ h2 {
 .quote {
     position: relative;
     font-family: 'Marck Script', cursive;
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
     text-align: center;
     line-height: 1.4;
     max-width: 80%;
@@ -481,14 +490,6 @@ h2 {
         gap: 10px;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
     #gallery {
         grid-template-columns: 1fr;
         width: 100%;
@@ -655,4 +656,11 @@ button {
     color: white;
     text-decoration: none;
     border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
