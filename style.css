@@ -176,6 +176,19 @@ footer {
     }
 }
 
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 /* =========================
    INDEX PAGE LAYOUT
    ========================= */
@@ -387,6 +400,8 @@ h1 {
     background: var(--color-primary);
     border-radius: 50%;
     z-index: 1000;
+
+    animation: pulse 2.5s ease-in-out infinite;
 }
 
 .back-to-top svg {
@@ -604,7 +619,6 @@ h1 {
     content: "−";
 }
 
-/* Answer text */
 .faq-item p {
     margin-top: 10px;
     line-height: 1.5;
@@ -612,12 +626,11 @@ h1 {
     font-size: 0.95rem;
 }
 
-/* Smooth open animation */
 .faq-item[open] p {
     animation: fadeUp 0.3s ease-out;
 }
 
-/* Focus styles for accessibility */
+
 .faq-item summary:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 4px;
